@@ -199,31 +199,26 @@ Down Payment: $60,000 (20%)
 Loan Amount: $240,000
 
 
-DAX Formulas Used:
+ 
 
-Calculated Columns : 
+### Measures (In separate Measures table) :
 
-Age Breakdown =  DATEDIFF(�Borrowers�[DOB], TODAY(), YEAR)
-
-
-Measures (In separate Measures table) :
-
- [Total Loan Amount] = SUM('Financials'[Loan Amount])�
+ [Total Loan Amount] = SUM('Financials'[Loan Amount])
 
 [Total Loan Amount All States] = CALCULATE(
-���������������������������������������� [Total Loan Amount],
-����������������������������������������REMOVEFILTERS('Borrower'[State]))
+[Total Loan Amount],
+REMOVEFILTERS('Borrower'[State]))
 
 [% of All Loan Amount] = DIVIDE(
-�������������������������������� [Total Loan Amount], [Total Loan Amount All States],"Error")
+[Total Loan Amount], [Total Loan Amount All States],"Error")
 
 [Total Loan Amount All Ages] = CALCULATE(
-����������������������������������������[Total Loan Amount],
-����������������������������������������REMOVEFILTERS('Borrower'[Age breakdown]))
+[Total Loan Amount],
+REMOVEFILTERS('Borrower'[Age breakdown]))
 
 
 [% of All Loan Amount by Ages] = DIVIDE(
-������������������������������������'Financials'[Total Loan Amount],'Financials'[Total Loan Amount All Ages],"Error")
+'Financials'[Total Loan Amount],'Financials'[Total Loan Amount All Ages],"Error")
 
 % of All Loan Amount by States = DIVIDE([Total Loan Amount], [Total Loan Amount All States], "Error")
 
@@ -236,7 +231,7 @@ Selected State Card Value = CONCATENATE("Total Loan Amount : ", SELECTEDVALUE('P
 
 For table title based on property state selected
 Selected State for Table = CONCATENATE("Total Loan Amount by Property Usage and State : ",
-� � � � � � � � � � � � � � � � � � � � SELECTEDVALUE('Property'[Property State]))
+SELECTEDVALUE('Property'[Property State]))
 
 
 
